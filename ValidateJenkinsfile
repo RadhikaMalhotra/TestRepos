@@ -1,4 +1,4 @@
-job('upstreamJob') {
+//job('upstreamJob') {
 //pipeline {
     scm {
         git {
@@ -19,7 +19,7 @@ job('upstreamJob') {
             deleteOnMerge()
         }
     }*/
-}
+//}
 /*
 job('downstreamJob') {
     wrappers {
