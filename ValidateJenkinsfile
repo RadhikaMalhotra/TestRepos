@@ -11,7 +11,7 @@ pipeline {
   stages {
     stage('Get pull request for Validation') {
       steps {
-               scm {
+            scm {
                 git {
                     remote {
                         url('https://github.com/RadhikaMalhotra/TestRepos.git')
@@ -20,8 +20,8 @@ pipeline {
                     }
                     branch('*/feature/*')
                 }
-               }        
-        }
+            }        
+       }
     }
   }
 }
