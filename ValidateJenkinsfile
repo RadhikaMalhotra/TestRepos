@@ -1,36 +1,27 @@
-job('upstreamJob') {
-    scm {
-        git {
-            remote {
-                github('TestRepos')
-                refspec('+refs/heads/*:refs/remotes/origin/pr/*')
-            }
-            branch('*/feature/*')
-        }
+pipeline {
+  agent {
+    label 'ciread'
+  }
+  
+  options {
+    timeout(time: 15, unit: 'MINUTES')
+  }
+  
+  stages {
+    stage('Get pull request for Validation') {
+      steps {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/RadhikaMalhotra/TestRepos.git')
+                        credentials()
+			github('RadhikaMalhotra/TestRepos')
+                        refspec('+refs/heads/*:refs/remotes/origin/pr/*')
+                    }
+                    branch('*/feature/*')
+                }
+            }        
+       }
     }
-
-    
-    publishers {
-        mergeGithubPullRequest {
-            mergeComment('merged by Jenkins')
-            onlyAdminsMerge()
-            disallowOwnCode()
-            failOnNonMerge()
-            deleteOnMerge()
-        }
-    }
-}
-
-job('downstreamJob') {
-    wrappers {
-        downstreamCommitStatus {
-            context('CONTEXT NAME')
-            triggeredStatus("The job has triggered")
-            startedStatus("The job has started")
-            statusUrl()
-            completedStatus('SUCCESS', "The job has passed")
-            completedStatus('FAILURE', "The job has failed")
-            completedStatus('ERROR', "The job has resulted in an error")
-        }
-    }
+  }
 }
