@@ -20,8 +20,8 @@
         }
     }*/
 //}
-/*
-job('downstreamJob') {
+
+//job('downstreamJob') {
     wrappers {
         downstreamCommitStatus {
             context('CONTEXT NAME')
@@ -33,4 +33,4 @@ job('downstreamJob') {
             completedStatus('ERROR', "The job has resulted in an error")
         }
     }
-}*/
+//}
