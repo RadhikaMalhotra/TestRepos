@@ -1,4 +1,4 @@
-job('upstreamJob') {
+//job('upstreamJob') {
     scm {
         git {
             remote {
@@ -18,7 +18,7 @@ job('upstreamJob') {
             deleteOnMerge()
         }
     }*/
-}
+//}
 /*
 job('downstreamJob') {
     wrappers {
