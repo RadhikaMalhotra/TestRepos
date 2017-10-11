@@ -9,7 +9,7 @@ job('upstreamJob') {
         }
     }
     
-    publishers {
+/*    publishers {
         mergeGithubPullRequest {
             mergeComment('merged by Jenkins')
             onlyAdminsMerge()
@@ -17,9 +17,9 @@ job('upstreamJob') {
             failOnNonMerge()
             deleteOnMerge()
         }
-    }
+    }*/
 }
-
+/*
 job('downstreamJob') {
     wrappers {
         downstreamCommitStatus {
@@ -32,4 +32,4 @@ job('downstreamJob') {
             completedStatus('ERROR', "The job has resulted in an error")
         }
     }
-}
+}*/
